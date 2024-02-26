@@ -49,6 +49,7 @@ let speciesField = document.getElementById("speciesField");
 let breedField = document.getElementById("breedField");
 let petList = document.getElementById("petList");
 let addButton = document.getElementById("add");
+let addButton2 = document.getElementById("add2");
 
 let pets = [];
 
@@ -68,7 +69,7 @@ const renderList = function () {
     petList.appendChild(newLi);
   });
 };
-
+let i = 0;
 addButton.onclick = function () {
   let newPet = new Pet(petNameField.value, ownerNameField.value, speciesField.value, breedField.value);
   if (
@@ -81,10 +82,23 @@ addButton.onclick = function () {
   } else {
     pets.push(newPet);
     renderList();
+    i++;
+    console.log(i);
+    if (i > 1) {
+      addButton2.disabled = false;
+    }
+
     //   per svuotare i campi
     petNameField.value = "";
     ownerNameField.value = "";
     speciesField.value = "";
     breedField.value = "";
+  }
+};
+
+addButton2.onclick = function () {
+  if (pets[0] === undefined || pets[1] === undefined) {
+  } else {
+    console.log(Pet.ownerMatch(pets[0], pets[1]));
   }
 };
