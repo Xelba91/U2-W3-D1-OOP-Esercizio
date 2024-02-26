@@ -71,12 +71,13 @@ const renderList = function () {
 
 addButton.onclick = function () {
   let newPet = new Pet(petNameField.value, ownerNameField.value, speciesField.value, breedField.value);
-  if (petNameField.value === "") {
-    // (speciesField.value === "") &
-    // (breedField.value === "")
-    {
-      alert("scrivi almeno il nome");
-    }
+  if (
+    petNameField.value === "" ||
+    speciesField.value === "" ||
+    ownerNameField.value === "" ||
+    breedField.value === ""
+  ) {
+    alert("riempi tutti i campi");
   } else {
     pets.push(newPet);
     renderList();
